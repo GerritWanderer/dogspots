@@ -1,5 +1,13 @@
 <h1>Show Spot</h1>
 <p>{{title}}</p>
 <p>{{text}}</p>
+
+<h3>Comments</h3>
+<ul>
+  {{#each comment in comments}}
+    <li>{{{comment.id}}</li>
+  {{/each}}
+</ul>
+
 {{#linkTo spotEdit content}}Edit Spot{{/linkTo}}
 {{#linkTo spots}}Index Spots{{/linkTo}}

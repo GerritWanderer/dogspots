@@ -13,6 +13,6 @@
 //= require jquery
 //= require handlebars
 //= require ./vendor/ember
-//= require ./vendor/ember-data
+//= require ./vendor/ember-data-head
 //= require ./app
 //= require_tree .

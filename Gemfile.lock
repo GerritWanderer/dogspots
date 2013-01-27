@@ -103,9 +103,6 @@ GEM
       http_parser.rb (~> 0.5.3)
       multi_json (~> 1.0)
     polyglot (0.3.3)
-    rabl (0.7.9)
-      activesupport (>= 2.3.14)
-      multi_json (~> 1.0)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -183,7 +180,6 @@ DEPENDENCIES
   jquery-rails
   paperclip
   poltergeist
-  rabl
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   sqlite3
