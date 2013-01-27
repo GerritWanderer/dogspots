@@ -6,11 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ActiveRecord::Base.connection.tables.each do |table|
-  ActiveRecord::Base.connection.execute("TRUNCATE #{table}") if Rails.env.production?
-  ActiveRecord::Base.connection.execute("DELETE FROM #{table}") if Rails.env.development?
-end
-
 rand(6).times do
   user = User.new
   user.name = Faker::Internet.user_name

@@ -11,7 +11,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'paperclip'
 gem 'rabl'
+
+group :test do
+  gem 'jasmine'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'poltergeist'
+end
+
 gem 'faker'
