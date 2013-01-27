@@ -5,22 +5,25 @@ class SpotsController < ApplicationController
 	end
 
 	def show
-	@spot = Spot.includes([:ratings, :comments, :user]).find(params[:id])
-	render rabl: @spot
+		@spot = Spot.includes([:ratings, :comments, :user]).find(params[:id])
+		render rabl: @spot
 	end
 
 	def create
 	  @spot = Spot.create(params[:spot])
-	  
 	  unless params[:spot_image].blank?
 	  	encoded_string = Base64.decode64(params[:spot_image].gsub("data:image/jpeg;base64,", ""))
-	  	
 	  	spot_image = SpotImage.new({:spot_id => @spot.id, :user_id => 1})
 	    spot_image.image = StringIO.new(encoded_string).extend(StringIoHelper)
-		spot_image.save
+			spot_image.save
+		end
+	  render rabl: @spot
 	end
 
-	  render rabl: @spot
+	def update
+		@spot = Spot.find(params[:id])
+	  @spot.update_attributes(params[:spot])
+	  render :nothing => true
 	end
 
 	def destroy

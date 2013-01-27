@@ -1,0 +1,8 @@
+<h1>Spots</h1>
+<ul>
+  {{#each spot in content}}
+    <li>{{#linkTo spot spot}}{{spot.title}}{{/linkTo}}</li>
+  {{/each}}
+</ul>
+
+{{#linkTo spotNew}}New Spot{{/linkTo}}
