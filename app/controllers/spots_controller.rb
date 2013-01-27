@@ -1,12 +1,12 @@
 class SpotsController < ApplicationController
 	def index
 	  @spots = Spot.includes([:ratings, :comments, :user])
-	  render rabl: @spots
+	  render :json => @spots
 	end
 
 	def show
 		@spot = Spot.includes([:ratings, :comments, :user]).find(params[:id])
-		render rabl: @spot
+		render :json => @spot
 	end
 
 	def create
@@ -17,7 +17,7 @@ class SpotsController < ApplicationController
 	    spot_image.image = StringIO.new(encoded_string).extend(StringIoHelper)
 			spot_image.save
 		end
-	  render rabl: @spot
+	  render :json => @spot
 	end
 
 	def update

@@ -12,7 +12,7 @@ end
 
 gem 'jquery-rails'
 gem 'paperclip'
-gem 'rabl'
+gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 
 group :test do
   gem 'jasmine'
