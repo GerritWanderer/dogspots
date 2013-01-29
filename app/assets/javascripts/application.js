@@ -14,5 +14,5 @@
 //= require handlebars
 //= require ./vendor/ember
 //= require ./vendor/ember-data-head
-//= require ./app
-//= require_tree .
+//= require_tree ./dogspots
+//= require_tree ./templates
