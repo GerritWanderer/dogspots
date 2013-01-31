@@ -1,5 +1,6 @@
 App.CommentNewController = Ember.ObjectController.extend({
   create: function() {
+    this.content.set("spot", this.controllerFor("spot").get("content"));
     this.store.commit();
     this.content.addObserver('id', this, 'afterCreate');
   },

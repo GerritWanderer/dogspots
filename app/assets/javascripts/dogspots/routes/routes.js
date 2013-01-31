@@ -13,9 +13,7 @@ App.IndexRoute = Ember.Route.extend({
 
 App.SpotRoute = Ember.Route.extend({
   setupController: function(controller) {
-    this.controllerFor('commentNew').set('model', App.Comment.createRecord({
-      spot: controller.get('content')
-    }));
+    this.controllerFor('commentNew').set('model', App.Comment.createRecord());
   }
 });
 App.SpotsRoute = Ember.Route.extend({

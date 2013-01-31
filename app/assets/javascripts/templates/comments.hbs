@@ -2,6 +2,9 @@
 <h3>Comments</h3>
 <ul>
   {{#each comment in controller }}
-    <li>{{{comment.text}}</li>
+    <li>
+      <a href='#' {{action "report" comment.id }}>[report]</a>
+      {{comment.text}}
+    </li>
   {{/each}}
 </ul>
