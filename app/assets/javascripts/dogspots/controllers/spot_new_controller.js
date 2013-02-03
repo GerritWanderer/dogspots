@@ -17,7 +17,6 @@ App.SpotNewController = Ember.ObjectController.extend({
     this.comment.addObserver('id', this, 'afterCommentCreate');
   },
   afterCommentCreate: function () {
-    debugger
     this.comment.removeObserver('id', this, 'afterCommentCreate');
     this.transitionToRoute('spot', this.content)
   },
