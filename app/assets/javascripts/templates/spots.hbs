@@ -1,7 +1,7 @@
 <h1>Spots</h1>
 <ul>
   {{#each spot in content}}
-    <li>{{#linkTo spot spot}}{{spot.title}}{{/linkTo}}</li>
+    <li>{{#linkTo spot spot}}{{spot.title}} [{{spot.average_ratings.spot}}]{{/linkTo}}</li>
   {{/each}}
 </ul>
 
