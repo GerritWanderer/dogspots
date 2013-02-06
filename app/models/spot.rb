@@ -6,9 +6,16 @@ class Spot < ActiveRecord::Base
 
   attr_accessible :user_id, :city, :latitude, :longitude, :street, :text, :title, :zip
 
-  def average_rating
-  	return 0 if self.ratings.empty?
-  	self.ratings.collect { |r| r.ground }.sum / self.ratings.size
+  def average_ratings
+    ratings = {:clean => 0, :ground => 0, :play => 0, :water => 0}
+    unless self.ratings.empty?
+      ratings[:clean] = self.ratings.collect { |r| r.clean }.sum / self.ratings.size
+      ratings[:ground] = self.ratings.collect { |r| r.ground }.sum / self.ratings.size
+      ratings[:play] = self.ratings.collect { |r| r.play }.sum / self.ratings.size
+      ratings[:water] = self.ratings.collect { |r| r.water }.sum / self.ratings.size
+      ratings[:spot] = ratings.inject(0){|sum, hash| sum + hash[1]} / ratings.keys.size
+    end
+    return ratings
   end
 
   def spot_image
