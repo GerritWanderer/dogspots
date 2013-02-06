@@ -1,7 +1,8 @@
 App.CommentsController = Ember.ArrayController.extend({
-  report: function(comment_id) {
-    var transaction = this.store.transaction("report");
-    transaction.createRecord(App.CommentReport, {comment_id: comment_id});
-    transaction.commit();
+  report: function(comment) {
+    // Create a commit in a seperate transaction
+    // var transaction = this.store.transaction();
+    // transaction.createRecord(App.CommentReport, {comment: comment});
+    // transaction.commit();
   }
 });

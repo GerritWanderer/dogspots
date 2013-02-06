@@ -3,7 +3,7 @@
 <ul>
   {{#each comment in controller }}
     <li>
-      <a href='#' {{action "report" comment.id }}>[report]</a>
+      <a href='#' {{action "report" comment }}>[report]</a>
       {{comment.text}}
     </li>
   {{/each}}
