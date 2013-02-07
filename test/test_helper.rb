@@ -7,7 +7,7 @@ require 'capybara/poltergeist'
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
+  # Note: You'll currently still have to declare fixtures explicitly in acceptance tests
   # -- they do not yet inherit this setting
   fixtures :all
 
@@ -20,7 +20,7 @@ end
 DatabaseCleaner.strategy = :truncation
 
 class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
+  # Make the Capybara DSL available in all acceptance tests
   include Capybara::DSL
 
   # Stop ActiveRecord from wrapping tests in transactions

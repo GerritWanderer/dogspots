@@ -1,0 +1,15 @@
+aaron_park_high:
+  spot_id: 1
+  user_id: 1
+  ground: 5
+  water: 5
+  clean: 5
+  play: 5
+
+bodo_park_low:
+  spot_id: 2
+  user_id: 2
+  ground: 2
+  water: 2
+  clean: 2
+  play: 2

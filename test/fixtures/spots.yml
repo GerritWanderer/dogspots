@@ -1,0 +1,21 @@
+aaron_park:
+  id: 1
+  title: Aaron Park
+  text: Nice Park from Aaron
+  street: Aaron Park Street
+  zip: 11111
+  city: Aaron City
+  latitude: 11.111
+  longitude: 11.111
+  user_id: 1
+
+bodo_park:
+  id: 2
+  title: Bodo Park
+  text: Nice Park from Bodo
+  street: Bodo Park Street
+  zip: 22222
+  city: Bodo City
+  latitude: 22.222
+  longitude: 22.222
+  user_id: 2
