@@ -1,4 +1,9 @@
-App.CommentNewController = Ember.ObjectController.extend({
+App.RatingNewController = Ember.ObjectController.extend({
+  ground: [1,2,3,4,5],
+  clean: [1,2,3,4,5],
+  play: [1,2,3,4,5],
+  water: [1,2,3,4,5],
+
   create: function() {
     this.content.set("spot", this.controllerFor("spot").get("content"));
     if (this.content.get("isInvalid")) {
