@@ -11,6 +11,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'devise'
 gem 'paperclip'
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 

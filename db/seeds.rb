@@ -6,15 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-rand(6).times do
+rand(3..6).times do
   user = User.new
   user.name = Faker::Internet.user_name
   user.email = Faker::Internet.email
+  password = Devise.friendly_token.first(8)
+  user.password = password
+  user.password_confirmation = password
   user.save!
   
-  rand(5).times do
+  rand(2..5).times do
+    street = Faker::Address.street_name
     spot = user.spots.build
-    spot.title = Faker::Name.name
+    spot.title = "#{street} Park"
     spot.text = Faker::Lorem.paragraph
     spot.street = Faker::Address.street_name
     spot.zip = Faker::Address.zip
