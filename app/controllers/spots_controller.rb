@@ -10,6 +10,7 @@ class SpotsController < ApplicationController
 	end
 
 	def create
+    params[:spot].delete(:average_ratings) unless params[:spot][:average_ratings].nil?
 	  @spot = Spot.create(params[:spot])
 	  unless params[:spot_image].blank?
 	  	encoded_string = Base64.decode64(params[:spot_image].gsub("data:image/jpeg;base64,", ""))

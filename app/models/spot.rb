@@ -4,10 +4,11 @@ class Spot < ActiveRecord::Base
   has_many :spot_images
   belongs_to :user
 
+  attr_accessor :average_ratings
   attr_accessible :user_id, :city, :latitude, :longitude, :street, :text, :title, :zip
 
   def average_ratings
-    ratings = {:clean => 0, :ground => 0, :play => 0, :water => 0}
+    ratings = {:clean => 0, :ground => 0, :play => 0, :water => 0, :spot => 0}
     unless self.ratings.empty?
       ratings[:clean] = self.ratings.collect { |r| r.clean }.sum / self.ratings.size
       ratings[:ground] = self.ratings.collect { |r| r.ground }.sum / self.ratings.size
