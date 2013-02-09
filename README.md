@@ -22,9 +22,9 @@ Das Interface basiert auf Twitter Bootstrap.
 Vorrausgesetzt du hast Ruby 1.9.3 auf deinem System eingerichtet
 
 * git clone git@github.com:GerritWanderer/dogspots.git
-  * cd dogspots
-    * bundle install
-      * rake db:migrate
+* cd dogspots
+* bundle install
+* rake db:migrate
 
 **Beispieldaten laden**
 
@@ -33,15 +33,15 @@ Vorrausgesetzt du hast Ruby 1.9.3 auf deinem System eingerichtet
 **Server starten**
 
 * rails s
-  * und http://0.0.0.0:3000 im Browser aufrufen
+* und http://0.0.0.0:3000 im Browser aufrufen
 
 ## Tests
 
 Dogspots besitzt für den Rails-Stack folgende Tests:
 
 * Unit Tests
-  * Functional Tests
-    * Acceptance Tests
+* Functional Tests
+* Acceptance Tests
 
 Für die Acceptance Tests ist [PhantomJS](http://phantomjs.org)
 notwendig.
