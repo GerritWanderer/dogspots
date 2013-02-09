@@ -13,8 +13,12 @@ App.IndexRoute = Ember.Route.extend({
 
 App.SpotRoute = Ember.Route.extend({
   setupController: function(controller) {
-    this.controllerFor('commentNew').set('model', App.Comment.createRecord());
-    this.controllerFor('ratingNew').set('model', App.Rating.createRecord());
+    this.controllerFor('commentNew').set('model', App.Comment.createRecord({
+      user: App.currentUser
+    }));
+    this.controllerFor('ratingNew').set('model', App.Rating.createRecord({
+      user: App.currentUser
+    }));
   }
 });
 App.SpotsRoute = Ember.Route.extend({
@@ -24,6 +28,8 @@ App.SpotsRoute = Ember.Route.extend({
 });
 App.SpotNewRoute = Ember.Route.extend({
   setupController: function(controller) {
-    controller.set('content', App.Spot.createRecord());
+    controller.set('content', App.Spot.createRecord({
+      user: App.currentUser
+    }));
   }
 });
