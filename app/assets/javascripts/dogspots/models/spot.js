@@ -3,6 +3,7 @@ App.Spot = DS.Model.extend({
   average_ratings: DS.attr('object'),
   comments: DS.hasMany('App.Comment'),
   ratings: DS.hasMany('App.Rating'),
+  user: DS.belongsTo('App.User'),
 
   // Validations
   titleInvalid: function() {

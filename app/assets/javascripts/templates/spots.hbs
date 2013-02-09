@@ -1,3 +1,4 @@
+{{#if currentUser.isSignedIn}}Hi, {{currentUser.name}}{{else}}Hello, Guest{{/if}}
 <h1>Spots</h1>
 <ul>
   {{#each spot in content}}

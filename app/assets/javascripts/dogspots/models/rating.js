@@ -5,6 +5,7 @@ App.Rating = DS.Model.extend({
   water: DS.attr('number'),
   spot: DS.belongsTo('App.Spot'),
   comment: DS.belongsTo('App.Comment'),
+  user: DS.belongsTo('App.User'),
 
   ratingsInvalid: function() {
     return isNaN(this.get("clean")) || isNaN(this.get("ground")) || isNaN(this.get("play")) || isNaN(this.get("water"));
