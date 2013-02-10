@@ -41,12 +41,23 @@ class DogspotsTest < ActionDispatch::IntegrationTest
 
     # go back to index page
     click_link 'Index Spots'
+    save_and_open_page
     assert page.has_content?('Spots')
     assert page.has_xpath?('//li', :count => 3)
 
     # comment workaround
     click_link 'Halbinsel Stralau [0]'
     assert page.has_xpath?('//li', :count => 1)
+    assert page.has_content?('Tolle Gegend')
+  end
+
+  def test_create_comment
+    visit '/'
+    click_link "#{spots(:aaron_park).title} [5]"
+    assert page.has_xpath?('//li', :count => 2)
+    fill_in('Text:', :with => 'Tolle Gegend')
+    click_link 'Create Comment'
+    assert page.has_xpath?('//li', :count => 3)
     assert page.has_content?('Tolle Gegend')
   end
 end

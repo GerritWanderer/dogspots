@@ -8,8 +8,10 @@ class Spot < ActiveRecord::Base
   attr_accessible :user_id, :city, :latitude, :longitude, :street, :text, :title, :zip
 
   def average_ratings
-    ratings = {:clean => 0, :ground => 0, :play => 0, :water => 0, :spot => 0}
-    unless self.ratings.empty?
+    if self.ratings.empty?
+      ratings = {:clean => 0, :ground => 0, :play => 0, :water => 0, :spot => 0}
+    else
+      ratings = {}
       ratings[:clean] = self.ratings.collect { |r| r.clean }.sum / self.ratings.size
       ratings[:ground] = self.ratings.collect { |r| r.ground }.sum / self.ratings.size
       ratings[:play] = self.ratings.collect { |r| r.play }.sum / self.ratings.size

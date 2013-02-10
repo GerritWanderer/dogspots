@@ -16,9 +16,9 @@ App.SpotRoute = Ember.Route.extend({
     this.controllerFor('commentNew').set('model', App.Comment.createRecord({
       user: App.currentUser
     }));
-    this.controllerFor('ratingNew').set('model', App.Rating.createRecord({
-      user: App.currentUser
-    }));
+//    this.controllerFor('ratingNew').set('model', App.Rating.createRecord({
+//      user: App.currentUser
+//    }));
   }
 });
 App.SpotsRoute = Ember.Route.extend({

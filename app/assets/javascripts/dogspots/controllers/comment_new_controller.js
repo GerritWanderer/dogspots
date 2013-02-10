@@ -1,6 +1,8 @@
 App.CommentNewController = Ember.ObjectController.extend({
+  needs: ['spot'],
+
   create: function() {
-    this.content.set("spot", this.controllerFor("spot").get("content"));
+    this.content.set("spot", this.get("controllers.spot.content"));
     if (this.content.get("isInvalid")) {
       this.content.set("spot", undefined);
     } else {
