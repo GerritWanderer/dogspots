@@ -15,6 +15,10 @@ gem 'devise'
 gem 'paperclip'
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
