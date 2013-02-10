@@ -41,7 +41,6 @@ class DogspotsTest < ActionDispatch::IntegrationTest
 
     # go back to index page
     click_link 'Index Spots'
-    save_and_open_page
     assert page.has_content?('Spots')
     assert page.has_xpath?('//li', :count => 3)
 
@@ -49,6 +48,30 @@ class DogspotsTest < ActionDispatch::IntegrationTest
     click_link 'Halbinsel Stralau [0]'
     assert page.has_xpath?('//li', :count => 1)
     assert page.has_content?('Tolle Gegend')
+  end
+
+  def test_update_spot
+    visit '/'
+    click_link "#{spots(:aaron_park).title} [5]"
+    click_link 'Edit Spot'
+    assert page.has_content?('Edit Spot')
+    fill_in('Title:', :with => 'Aaron Park Avenue')
+    click_link 'Update'
+
+    # show detail page
+    assert page.has_content?('Show Spot')
+    assert page.has_content?('Aaron Park Avenue')
+  end
+
+  def test_delete_spot
+    visit '/'
+    click_link "#{spots(:aaron_park).title} [5]"
+    click_link 'Edit Spot'
+    click_link 'Destroy'
+
+    # go back to index page
+    assert page.has_content?('Spots')
+    assert page.has_xpath?('//li', :count => 1)
   end
 
   def test_create_comment
