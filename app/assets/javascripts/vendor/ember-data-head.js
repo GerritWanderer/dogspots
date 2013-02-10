@@ -1,3 +1,6 @@
+// Last commit: 63ca52f (2013-02-06 12:36:10 -0800)
+
+
 (function() {
 window.DS = Ember.Namespace.create({
   // this one goes to 11
@@ -5996,10 +5999,10 @@ DS.Serializer = Ember.Object.extend({
   registerEnumTransform: function(type, objects) {
     var transform = {
       deserialize: function(deserialized) {
-        return objects.objectAt(deserialized);
+        return Ember.A(objects).objectAt(deserialized);
       },
       serialize: function(serialized) {
-        return objects.indexOf(serialized);
+        return Ember.EnumerableUtils.indexOf(objects, serialized);
       },
       values: objects
     };
@@ -6481,6 +6484,7 @@ DS.JSONSerializer = DS.Serializer.extend({
   },
 
   sideloadRelationships: function(loader, type, json, prop, loaded) {
+    if (loaded[prop]) { return; }
     loaded[prop] = true;
 
     get(type, 'relationshipsByName').forEach(function(key, meta) {
@@ -6488,7 +6492,7 @@ DS.JSONSerializer = DS.Serializer.extend({
       if (meta.kind === 'belongsTo') {
         key = this.pluralize(key);
       }
-      if (json[key] && !loaded[key]) {
+      if (json[key]) {
         this.sideloadRelationships(loader, meta.type, json, key, loaded);
       }
     }, this);
@@ -7298,7 +7302,7 @@ DS.FixtureAdapter = DS.Adapter.extend({
     Ember.assert("Unable to find fixtures for model type "+type.toString(), !!fixtures);
 
     if (fixtures) {
-      fixtures = fixtures.findProperty('id', id);
+      fixtures = Ember.A(fixtures).findProperty('id', id);
     }
 
     if (fixtures) {

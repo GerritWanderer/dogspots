@@ -38,3 +38,12 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
   end
 end
+
+def save_and_open_page
+  dir = "#{Rails.root}/tmp/cache/capybara"
+  file = "#{dir}/#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}.png"
+  FileUtils.mkdir_p dir
+  page.driver.render file
+  wait_until { File.exists?(file) }
+  system "open #{file}"
+end

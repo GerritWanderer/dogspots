@@ -1,4 +1,5 @@
 <h1>New Spot</h1>
-Title: {{view Ember.TextField valueBinding="title"}} <br/>
-Text: {{view Ember.TextField valueBinding="text"}} <br/>
+
+<label {{bindAttr for="view.title.elementId"}}>Title:</label> {{view Ember.TextField viewName="title" valueBinding="title"}}<br />
+<label {{bindAttr for="view.text.elementId"}}>Text:</label> {{view Ember.TextField viewName="text" valueBinding="text"}}<br />
 <a href='#' {{action "create"}}>Create</a>

@@ -11,9 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def guest_user
-    puts "auth token"
-    puts cookies[:authentication_token]
-    puts "auth token"
     User.find_by_authentication_token(cookies[:authentication_token] ||= create_guest_user.authentication_token)
   end
 

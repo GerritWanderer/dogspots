@@ -3,7 +3,7 @@ class DogspotsTest < ActionDispatch::IntegrationTest
   fixtures :all
 
   def test_basic_webapp_navigation
-    visit "/"
+    visit '/'
     assert page.has_content?('Spots')
 
     # Check if it has 2 Spots including a score
@@ -21,8 +21,30 @@ class DogspotsTest < ActionDispatch::IntegrationTest
     assert page.has_content?(comments(:aaron_park_2).text)
 
     # go back to index page
-    click_link "Index Spots"
+    click_link 'Index Spots'
     assert page.has_content?('Spots')
     assert page.has_xpath?('//li', :count => 2)
+  end
+
+  def test_create_spot
+    visit '/'
+    click_link 'New Spot'
+    assert page.has_content?('New Spot')
+    fill_in('Title:', :with => 'Halbinsel Stralau')
+    fill_in('Text:', :with => 'Tolle Gegend')
+    click_link 'Create'
+
+    # show detail page
+    assert page.has_content?('Show Spot')
+    assert page.has_content?('Halbinsel Stralau')
+    assert page.has_content?('Comments')
+    #assert page.has_xpath?('//li', :count => 1)
+    #assert page.has_content?('Tolle Gegend')
+
+    # go back to index page
+    click_link 'Index Spots'
+    assert page.has_content?('Spots')
+    assert page.has_xpath?('//li', :count => 3)
+    assert page.has_content?('Halbinsel Stralau')
   end
 end

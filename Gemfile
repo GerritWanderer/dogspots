@@ -16,8 +16,9 @@ gem 'paperclip'
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 
 group :test do
-  gem 'jasmine'
   gem 'database_cleaner'
+  gem 'launchy'
+  gem 'jasmine'
   gem 'capybara'
   gem 'poltergeist'
 end
