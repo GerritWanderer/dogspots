@@ -13,22 +13,19 @@ App.SpotNewController = Ember.ObjectController.extend({
     this.transitionToRoute('spots');
   },
   afterSpotCreate: function () {
+    debugger
     this.content.removeObserver('id', this, 'afterSpotCreate');
-    this.comment = App.Comment.createRecord({
+    this.content.get('comments').createRecord({
       spot: this.content,
-      text: this.content.get("text")}
-    );
+      user: App.currentUser,
+      text: this.content.get("comment_text")
+    });
 
-    if (this.comment.get("isInvalid")) {
+    if (this.content.get('comments').objectAt(0).get("isInvalid")) {
       // do something
-      this.transitionToRoute('spot', this.content);
     } else {
       this.store.commit();
-      this.comment.addObserver('id', this, 'afterCommentCreate');
     }
-  },
-  afterCommentCreate: function () {
-    this.comment.removeObserver('id', this, 'afterCommentCreate');
     this.transitionToRoute('spot', this.content);
-  },
+  }
 });

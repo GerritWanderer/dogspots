@@ -38,13 +38,15 @@ class DogspotsTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Show Spot')
     assert page.has_content?('Halbinsel Stralau')
     assert page.has_content?('Comments')
-    #assert page.has_xpath?('//li', :count => 1)
-    #assert page.has_content?('Tolle Gegend')
 
     # go back to index page
     click_link 'Index Spots'
     assert page.has_content?('Spots')
     assert page.has_xpath?('//li', :count => 3)
-    assert page.has_content?('Halbinsel Stralau')
+
+    # comment workaround
+    click_link 'Halbinsel Stralau [0]'
+    assert page.has_xpath?('//li', :count => 1)
+    assert page.has_content?('Tolle Gegend')
   end
 end
