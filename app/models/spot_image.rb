@@ -3,5 +3,5 @@ class SpotImage < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :image, :user_id, :spot_id
-  has_attached_file :image, :styles => { :thumb => "100x100>" }
+  has_attached_file :image, :styles => { :thumb => "50x50#" }
 end

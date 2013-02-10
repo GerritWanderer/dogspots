@@ -11,11 +11,17 @@ class ApplicationController < ActionController::Base
   end
 
   def guest_user
-    User.find_by_authentication_token(cookies[:authentication_token] ||= create_guest_user.authentication_token)
+    if cookies[:authentication_token]
+      user = User.find_by_authentication_token(cookies[:authentication_token])
+      return user.nil? ? create_guest_user : user
+    else
+      return create_guest_user
+    end
   end
 
   private
   def create_guest_user
+    puts "create new user"
     user = User.create(:name => "Gast", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
     user.save(:validate => false)
     cookies[:authentication_token] = {:value => user.authentication_token, :expires => Time.now + 1.year}
