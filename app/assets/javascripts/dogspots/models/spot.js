@@ -1,6 +1,7 @@
 App.Spot = DS.Model.extend({
   title: DS.attr('string'),
   average_ratings: DS.attr('object'),
+  image_url: DS.attr('string'),
   comments: DS.hasMany('App.Comment'),
   ratings: DS.hasMany('App.Rating'),
   user: DS.belongsTo('App.User'),

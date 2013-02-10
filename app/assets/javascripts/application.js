@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require twitter/bootstrap
 //= require handlebars
 //= require ./vendor/ember-head
 //= require ./vendor/ember-data-head
