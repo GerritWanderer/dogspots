@@ -1,12 +1,49 @@
+.navbar-inner {
+  .container { padding-left: 20px; }
+}
+
+
 #spots {
   .spots-entry {
+    display: block;
     border-bottom: 1px solid #c1c2bc;
-    img {
-      max-width: 50px;
-      max-heiht: 50px;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f0f6f7));
+    padding-bottom: 10px;
+    .spot-title {
+      padding-top: 6px;
+      background: url(http://static.barcoo.com/images/barcoo/pmb_redesign/icons/follow.png) 95% 65% no-repeat;
+      background-size: 15px auto;
+      .rating {
+        height: 16px;
+        float: left;
+        margin-right: 10px;
+        width: 80px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sGFA03IqmpAacAAAN5SURBVFjDzZjPaxx1GMY/T6Mi7aqlTQ5qaGqstimh5kdXwV4ms8bWVEudePDUk8FDNFf9C8RraRVFL2ooCM74D7izcxBEBEUrIngR0qMIio2RCI+HmY1xXTfp7sTdFwaGme+8++zzvu/zft8vlGhxms3E9WymTJ+3lekMexEE8GVZLveVx15jVDAtMR2n2ejAMSg0gTgJzu/hxkAxCEwCY8AYZnKgQpyk2QgwBTl/wFRcb4wMEoMnMKdxUSLitKQTgwWQPP/yYuZk8az/AJM0OwxUESDlBSOwXY3zd31ncBz4pzgbJM1gj/cdoOE4MFtEd7vNSjreV4BJmlVwXr15dWyJYhPvVJJmlX4yeEziTHvhBuMzwLF+AhzDrnboLlXbY30BmKTZ/rx6NdRh2ZCkalJv7O+6hSZplgDPMpDmj/cBEbACbA4Qsk3wCihSES6AacxH4PGm4PaFM/hB8BzwTRQGeQ5GYQDwFWIWabV/6Pw+5tEmuFb1aib/7cAl4Cpw5/+EbN2wLLMa1eb+bJWrdhUq8CnQKmaSvY3418Al29cXa3Nup6edpOQQ8DqwVHqm5T/9NvBKFAa//LeW7qx3dwDPA28AlZIQ/mrzokQchcFm51Fi98L8CPAOUO2Rvc9BL0Rh8O3uZp1b6x4PAu9B+/67C/sEsxTVgh/3qtUdAI72QN/DFnftSS+O6w2ACeD+7iQOgCPYD+wJQEnDQK3rpq8tP2fjeuPQXoR4GHu+hAqelzRSKsC4nuWTm3S0BIAPAUdKBSg4CAQ7JNkG8GZxbeyQi0/FaXawvBCLw8AzHVasIS1FYbAchcEyZgl7zW7nyhS5XB7AYts+zvbR7e/bFDgfhcHWLiiqBatI5yWnLWubyntK+TlO7wCTNLtb0sK/dF38bnPZcCEKg+ut3xXPLhiuGDa8RaeamOeT+s4T347Hb4Z7hBdams4a8OpiLbjW6dsonLsJrCRp9gXoNWDr3FBmweIt4LeeGJQ9ijWxLccz4Mko7Ayuhc0PgLPAp9v++jT2aE8hTtJGxejpgrybwBXBuSgMvr9VbYnC4DvwE7avAutIINWK6bDbEKsicQ74CXgpCoMPexHAKJz7A3g5SbPPgMsyFxHvAuvdhvjeIqsf6xVcC5vXgMcRAoa72m7FaTYk+z7Ez0Wyl25Jmh0ARmzfWGyZRZr2F9FfIUJIJgdiAAAAAElFTkSuQmCC) repeat-x;
+        background-position: 0 50%;
+        background-size: auto 100%;
+        -moz-background-size: auto 100%;
+      }
+      .active {
+        width: 0px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sGFA04MN2IbCAAAASESURBVFjDxZhfiBVlGMZ/j4qkVoaRsFpS6krtYqA7g0YzkRRKUqwhdROiEP2jgggqoiuvQuiiCw28ivIiCAkKL+wmqDlhOJNElBB4tRZddbGhBZvu08V8c86c9Rz37DmrZ2CZ2fN95zvPPM/3vs/7frCIV04ykZNMLOaay1jc65lw/3GxFlwy6AIFaXXfILQNtK0g2VAfGyqDEVn1OB7+AI0DU7Wx4TFYu7YC6wXrw/PwJc5b8q4z3g5gjGF7TrKuHEuGB1DhbhgTxOVnQhALjZVjGh7Aao8JxgwbwdXQRuMxgHjAfbhkEaJ3BLyj5FMG7JLJHTnJyKAyD8Bgk61RUKyW6gpjsWB0aEES0WjuvxKk504ZJezDau4wonitIArkuRU8zecoJ1170xnMWw6xCZr/aG6AG1LwpuDTNw9g3IrezcZbuu1QwRahzeV3+pN5WUGyCzQCnrmWiG7h4VlgJbBfbXjaKHTQfX9OauAf9UyIAS0H/lwGehh4CXR36QPzQ1SYYYzQbBclBMyCJwWT9Jyww6r4d+C4Qp7aCXoLmASWdmLkxl82SMAV4Evgg4jsB9US7+3AO4YDgnvoIt2NRGY8JfgUdCQiuwSgnLTNjgqSZ0GvAo/cBJD1tb8FH41onKxnC1UpoB5lOekDwm8AB0ArgnsRXnSRgBkjCS4bnxB8GNH4rdY+ENNoZ6YONCdZAbwg9ApwfysoB2azvsZ54BjwcUT2b+XbdedRpyIgapM8fRx4zTCpASU3WFjh618AxyKyb+qSzq1+1KU7A9ScXJBuKFMRLwNr+gRpsAx/gT4Cjsdkf3QDdl2AnSQvSJYbPQd+T2hTfwz6vNAR489iGv91knRBACuQChVJQXov+CvQ1j433jng6YhsqqoR56t05u3q5njoaL8NUWBiu/F9ZcfXmzf3XCzkJLdBaap0KP56r3CV5iSrFq2aqaQQuhN4IvjwAKnGe0F39drYzwuwVTl7IxC5I3n2tZ/bnVQWekgwMqfpH0ziguRWocTt1XJNOikwexp8uuY67uQgwK6CdNXAEldVsNEaWom6vqfK3Fva1WHgoNFB48PGlwNrbgcqwHvAd/RSaatHBncanVGbfq4k+xV4F/g6IpupciawB/S+Ybxs3xW80lVFuSMiOzuwxDnpKtBulYcaFRsq+0t9brwPOBWRzRQkVeKdMZwC9glOhvK2yWZ40V0Fycq+AVYRJlgNPBXYCt25p4E3DYdiGhciMufBESIawboajsguAIcMbwN/l8s1q/EnQavni2bNL286YVzUyv2fgNeNv49puJuX1ouOgnQJkABH64neMBGTnetb4oJ0JbA3ALsK+gTYbdyIaTgnDX6ddTy3yUkroLOG74wfM5wITRfgRwvSW/o5a66CY21BcrYgvVSQPt9pzkLOccKzCpIXC5JLBemZIjT2fZ3fFKTbCtJfCtLxbj+40JeuBd+DBcnPc9fueQ/mpEuF1xtNx2TTnYrZ/k7E3HSnnHS1YI3hYkx2ZYHVjK8aphRy7KDg6tZWraUyG0zrOrH6P7X+tW16t1aCAAAAAElFTkSuQmCC) repeat-x;
+        background-position: 0 50%;
+        background-size: auto 100%;
+        -moz-background-size: auto 100%;
+        height: 100%;
+        &.stars1 { width: 20%; }
+        &.stars2 { width: 40%; }
+        &.stars3 { width: 60%; }
+        &.stars4 { width: 80%; }
+        &.stars5 { width: 100%; }
+      }
+    }
+    .spot-image {
+      height: 60px;
+      background-size: 60px, auto !important;
+      margin-top: 10px;
     }
   }
 }
 #content {
-  margin-top: 50px;
+  margin-top: 40px;
 }

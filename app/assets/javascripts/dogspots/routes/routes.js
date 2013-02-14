@@ -3,6 +3,7 @@ App.Router.map(function() {
   this.resource('spot', { path: '/spots/:spot_id' });
   this.resource('spotEdit', { path: '/spots/:spot_id/edit' });
   this.route("spotNew", { path: "/spots/new" });
+  this.route("about");
 });
 
 App.IndexRoute = Ember.Route.extend({

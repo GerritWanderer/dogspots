@@ -6,6 +6,14 @@ App.Spot = DS.Model.extend({
   ratings: DS.hasMany('App.Rating'),
   user: DS.belongsTo('App.User'),
 
+  // Computed Properties
+  image_url_style: function() {
+    return "background:url('" + this.get("image_url") + "') center center no-repeat";
+  }.property("image_url"),
+  stars_style: function() {
+    return "stars" + this.get("average_ratings").spot;
+  }.property("average_ratings"),
+
   // Validations
   titleInvalid: function() {
     return !this.get("title") || this.get("title.length") < 3;
