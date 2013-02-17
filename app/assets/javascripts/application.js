@@ -13,7 +13,7 @@
 //= require jquery
 //= require twitter/bootstrap
 //= require handlebars
-//= require ./vendor/ember-head
+//= require ./vendor/ember-1.0.0-rc.1
 //= require ./vendor/ember-data-head
 //= require_tree ./dogspots
 //= require_tree ./templates
