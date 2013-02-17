@@ -11,7 +11,11 @@ App.Spot = DS.Model.extend({
     return "background:url('" + this.get("image_url") + "') center center no-repeat";
   }.property("image_url"),
   stars_style: function() {
-    return "stars" + this.get("average_ratings").spot;
+    if (this.get("average_ratings") === undefined) {
+      return "stars0";
+    } else {
+      return "stars" + this.get("average_ratings").spot;
+    }
   }.property("average_ratings"),
 
   // Validations

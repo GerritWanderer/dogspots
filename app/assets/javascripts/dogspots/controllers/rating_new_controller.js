@@ -5,7 +5,7 @@ App.RatingNewController = Ember.ObjectController.extend({
   water: [1,2,3,4,5],
 
   create: function() {
-    this.content.set("spot", this.controllerFor("spot").get("content"));
+    this.content.set("spot", this.controllerFor("spotsShow").get("content"));
     if (this.content.get("isInvalid")) {
       this.content.set("spot", undefined);
     } else {
@@ -15,6 +15,6 @@ App.RatingNewController = Ember.ObjectController.extend({
   },
   afterCreate: function () {
     this.content.removeObserver('id', this, 'afterCreate');
-    this.transitionToRoute('spot', this.content.get("spot"));
+    this.transitionToRoute('spotsShow', this.content.get("spot"));
   }
 });

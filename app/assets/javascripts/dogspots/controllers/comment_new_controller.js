@@ -1,8 +1,8 @@
 App.CommentNewController = Ember.ObjectController.extend({
-  needs: ['spot'],
+  needs: ['spotsShow'],
 
   create: function() {
-    this.content.set("spot", this.get("controllers.spot.content"));
+    this.content.set("spot", this.get("controllers.spotsShow.content"));
     if (this.content.get("isInvalid")) {
       this.content.set("spot", undefined);
     } else {
@@ -12,6 +12,6 @@ App.CommentNewController = Ember.ObjectController.extend({
   },
   afterCreate: function () {
     this.content.removeObserver('id', this, 'afterCreate');
-    this.transitionToRoute('spot', this.content.get("spot"));
+    this.transitionToRoute('spotsShow', this.content.get("spot"));
   }
 });

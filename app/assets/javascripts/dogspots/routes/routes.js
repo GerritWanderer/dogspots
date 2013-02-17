@@ -1,8 +1,9 @@
 App.Router.map(function() {
   this.resource('spots');
-  this.resource('spot', { path: '/spots/:spot_id' });
-  this.resource('spotEdit', { path: '/spots/:spot_id/edit' });
-  this.route("spotNew", { path: "/spots/new" });
+  this.resource('spotsShow', { path: '/spots/:spot_id' });
+  this.resource('spotsEdit', { path: '/spots/:spot_id/edit' });
+  this.route("spotsNew", { path: "/spots/new" });
+
   this.route("about");
 });
 
@@ -12,7 +13,7 @@ App.IndexRoute = Ember.Route.extend({
   }
 });
 
-App.SpotRoute = Ember.Route.extend({
+App.SpotsShowRoute = Ember.Route.extend({
   setupController: function(controller) {
     this.controllerFor('commentNew').set('model', App.Comment.createRecord({
       user: App.currentUser
@@ -27,7 +28,7 @@ App.SpotsRoute = Ember.Route.extend({
     controller.set('content', App.Spot.find());
   }
 });
-App.SpotNewRoute = Ember.Route.extend({
+App.SpotsNewRoute = Ember.Route.extend({
   setupController: function(controller) {
     controller.set('content', App.Spot.createRecord({
       user: App.currentUser

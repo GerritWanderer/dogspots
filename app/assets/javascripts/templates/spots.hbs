@@ -1,13 +1,15 @@
 <div id="spots">
 {{#each spot in content}}
-  {{#linkTo spot spot class="row-fluid spots-entry"}}
-    <div class="span3 spot-image" {{bindAttr style="spot.image_url_style"}}></div>
-    <div class="span9 spot-title">
-      <h4>{{spot.title}}</h4>
-      <div class="rating"><div {{bindAttr class="spot.stars_style :active"}}"></div></div>
-      <span>{{spot.average_ratings.size}} Bewertungen</span>
-    </div>
-    <div class="clearfix"></div>
-  {{/linkTo}}
+  {{#unless spot.isDirty}}
+    {{#linkTo spotsShow spot class="row-fluid spots-entry"}}
+      <div class="span3 spot-image" {{bindAttr style="spot.image_url_style"}}></div>
+      <div class="span9 spot-title">
+        <h4>{{spot.title}}</h4>
+        <div class="rating"><div {{bindAttr class="spot.stars_style :active"}}"></div></div>
+        <span>{{spot.average_ratings.size}} Bewertungen</span>
+      </div>
+      <div class="clearfix"></div>
+    {{/linkTo}}
+  {{/unless}}
 {{/each}}
 </div>

@@ -1,4 +1,4 @@
-App.SpotNewController = Ember.ObjectController.extend({
+App.SpotsNewController = Ember.ObjectController.extend({
   create: function() {
     if (this.content.get("isInvalid")) {
       // do something
@@ -26,6 +26,6 @@ App.SpotNewController = Ember.ObjectController.extend({
     } else {
       this.store.commit();
     }
-    this.transitionToRoute('spot', this.content);
+    this.transitionToRoute('spotsShow', this.content);
   }
 });
