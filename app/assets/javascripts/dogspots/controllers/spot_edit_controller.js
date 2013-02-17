@@ -1,5 +1,5 @@
-App.SpotsEditController = Ember.ObjectController.extend({
-  update: function() {
+App.SpotEditController = Ember.ObjectController.extend({
+  save: function() {
     if (this.content.get("isInvalid")) {
       // do something
       return;
@@ -8,7 +8,7 @@ App.SpotsEditController = Ember.ObjectController.extend({
       this.transitionToRoute('spotsShow', this.content)
     }
   },
-  cancle: function() {
+  cancel: function() {
     if (this.content.isDirty) {
       this.content.rollback();
     }

@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <div class="button close btn-dismiss" {{action cancel content}}>x</div>
+  <h2 class="app-icon-large">Post</h2>
+</div>
+<div class="modal-body">
+  <div class="control-group">
+    <label class="control-label" for="spot-title">Title</label>
+    <div class="controls">
+        {{view Ember.TextField elementId='spot-title' valueBinding='content.title'}}
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="post-text">Text</label>
+    <div class="controls">
+        {{view Ember.TextField elementId='spot-text' valueBinding='content.text'}}
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <a class="btn btn-dark" {{action cancel}}>Cancel</a>
+  <button class="btn btn-success" type="submit" {{action save content}}>Save</button>
+</div>

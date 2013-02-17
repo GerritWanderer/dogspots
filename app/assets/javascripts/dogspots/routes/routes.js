@@ -1,8 +1,10 @@
 App.Router.map(function() {
-  this.resource('spots');
-  this.resource('spotsShow', { path: '/spots/:spot_id' });
-  this.resource('spotsEdit', { path: '/spots/:spot_id/edit' });
-  this.route("spotsNew", { path: "/spots/new" });
+  this.resource('spots', function() {
+    this.route("new", { path: "/spots/new" });
+    this.resource('spot', { path: "/:spot_id" }, function() {
+      this.route("edit");
+    });
+  });
 
   this.route("about");
 });
@@ -13,25 +15,39 @@ App.IndexRoute = Ember.Route.extend({
   }
 });
 
-App.SpotsShowRoute = Ember.Route.extend({
-  setupController: function(controller) {
-    this.controllerFor('commentNew').set('model', App.Comment.createRecord({
-      user: App.currentUser
-    }));
-//    this.controllerFor('ratingNew').set('model', App.Rating.createRecord({
-//      user: App.currentUser
-//    }));
+App.SpotsIndexRoute = Ember.Route.extend({
+  model: function() {
+    return App.Spot.find();
   }
 });
-App.SpotsRoute = Ember.Route.extend({
-  setupController: function(controller) {
-    controller.set('content', App.Spot.find());
+
+
+App.SpotsFormable = Ember.Mixin.create({
+  renderTemplate: function() {
+    this.render('spots/form')
+  },
+  events: {
+    cancel: function(spot) {
+      spot.transaction.rollback();
+      return this.transitionTo('spots');
+    },
+    submit: function(spot) {
+      spot.get('store').commit();
+      if (spot.didCreate) {
+        return this.transitionTo('spot', spot);
+      }
+    }
   }
 });
-App.SpotsNewRoute = Ember.Route.extend({
-  setupController: function(controller) {
-    controller.set('content', App.Spot.createRecord({
+App.SpotsNewRoute = Ember.Route.extend(App.SpotsFormable, {
+  model: function() {
+    return App.Spot.createRecord({
       user: App.currentUser
-    }));
+    });
+  }
+});
+App.SpotEditRoute = Ember.Route.extend(App.SpotsFormable, {
+  model: function() {
+    return this.modelFor('spot');
   }
 });

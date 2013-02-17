@@ -1,5 +1,5 @@
 App.SpotsNewController = Ember.ObjectController.extend({
-  create: function() {
+  save: function() {
     if (this.content.get("isInvalid")) {
       // do something
       return;
@@ -8,7 +8,7 @@ App.SpotsNewController = Ember.ObjectController.extend({
       this.content.addObserver('id', this, 'afterSpotCreate');
     }
   },
-  cancle: function() {
+  cancel: function() {
     this.content.deleteRecord();
     this.transitionToRoute('spots');
   },

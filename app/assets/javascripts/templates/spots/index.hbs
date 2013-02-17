@@ -1,7 +1,7 @@
 <div id="spots">
 {{#each spot in content}}
   {{#unless spot.isDirty}}
-    {{#linkTo spotsShow spot class="row-fluid spots-entry"}}
+    {{#linkTo 'spot' spot class="row-fluid spots-entry"}}
       <div class="span3 spot-image" {{bindAttr style="spot.image_url_style"}}></div>
       <div class="span9 spot-title">
         <h4>{{spot.title}}</h4>
