@@ -1,7 +1,7 @@
 <h3>Comments</h3>
 <ul>
   {{#each comment in controller }}
-    <li>
+    <li class="spot-comment">
       <a href='#' {{action "report" comment }}>[report]</a>
       {{comment.text}}
     </li>

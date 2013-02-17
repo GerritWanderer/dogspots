@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
 
   private
   def create_guest_user
-    puts "create new user"
     user = User.create(:name => "Gast", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
     user.save(:validate => false)
     cookies[:authentication_token] = {:value => user.authentication_token, :expires => Time.now + 1.year}

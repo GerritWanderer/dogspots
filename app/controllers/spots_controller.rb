@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  before_filter :delete_read_only_attributes, :only => :create
+
 	def index
 	  @spots = Spot.includes([:ratings, :comments, :user])
 	  render :json => @spots
@@ -10,7 +12,7 @@ class SpotsController < ApplicationController
 	end
 
 	def create
-    params[:spot].delete(:average_ratings) unless params[:spot][:average_ratings].nil?
+
 	  @spot = Spot.create(params[:spot])
 	  unless params[:spot_image].blank?
 	  	encoded_string = Base64.decode64(params[:spot_image].gsub("data:image/jpeg;base64,", ""))
@@ -30,5 +32,12 @@ class SpotsController < ApplicationController
 	def destroy
 		@spot = Spot.find(params[:id]).delete
 		render :nothing => true
-	end
+  end
+
+  private
+  def delete_read_only_attributes
+    Spot::READ_ONLY_ATTRIBUTES.each do |attr|
+      params[:spot].delete(attr)
+    end
+  end
 end
