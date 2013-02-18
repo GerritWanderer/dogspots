@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <div class="button close btn-dismiss" {{action cancel content}}>x</div>
+  <h2 class="app-icon-large">New Comment</h2>
+</div>
+<div class="modal-body">
+  <div class="control-group">
+    <label class="control-label" for="comment-text">Text</label>
+    <div class="controls">
+      {{view Ember.TextField elementId='comment-text' valueBinding='content.text'}}
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <a class="btn btn-dark" {{action cancel content}}>Cancel</a>
+  <button class="btn btn-success" type="submit" {{action submit content}}>Save</button>
+</div>

@@ -1,4 +1,4 @@
-App.SpotsFormView = Ember.View.extend({
+App.SpotsModal = Ember.Mixin.create({
   tagName: 'form',
   classNames: 'modal fade in form-custom-field-modal'.w(),
 
@@ -9,3 +9,6 @@ App.SpotsFormView = Ember.View.extend({
     this.$().modal('hide');
   }
 });
+
+App.SpotsFormView = Ember.View.extend(App.SpotsModal);
+App.SpotsCommentView = Ember.View.extend(App.SpotsModal);

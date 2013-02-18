@@ -2,8 +2,8 @@
 <p>{{title}}</p>
 <p>{{text}}</p>
 {{ render 'comments' comments }}
-{{ render 'commentNew' }}
 
+{{#linkTo 'spot.comment' content}}New Comment{{/linkTo}}
 {{#linkTo 'spot.edit' content}}Edit Spot{{/linkTo}}
 {{#linkTo spots}}Index Spots{{/linkTo}}
 {{outlet}}

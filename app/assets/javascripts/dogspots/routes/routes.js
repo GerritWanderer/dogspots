@@ -3,6 +3,7 @@ App.Router.map(function() {
     this.route("new", { path: "/spots/new" });
     this.resource('spot', { path: "/:spot_id" }, function() {
       this.route("edit");
+      this.route("comment");
     });
   });
 
@@ -20,7 +21,6 @@ App.SpotsIndexRoute = Ember.Route.extend({
     return App.Spot.find();
   }
 });
-
 
 App.SpotsFormable = Ember.Mixin.create({
   renderTemplate: function() {
@@ -49,5 +49,30 @@ App.SpotsNewRoute = Ember.Route.extend(App.SpotsFormable, {
 App.SpotEditRoute = Ember.Route.extend(App.SpotsFormable, {
   model: function() {
     return this.modelFor('spot');
+  }
+});
+App.SpotCommentRoute = Ember.Route.extend({
+  model: function() {
+    debugger
+    return App.Comment.createRecord({
+      user: App.currentUser,
+      spot: this.modelFor('spot')
+    });
+  },
+  renderTemplate: function() {
+    this.render('spots/comment')
+  },
+  events: {
+    cancel: function(comment) {
+      debugger
+      comment.transaction.rollback();
+      return this.transitionTo('spot', this.modelFor('spot'));
+    },
+    submit: function(comment) {
+      comment.get('store').commit();
+      if (comment.didCreate) {
+        return this.transitionTo('spot', this.modelFor('spot'));
+      }
+    }
   }
 });
