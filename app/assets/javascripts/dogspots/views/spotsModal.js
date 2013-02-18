@@ -10,5 +10,6 @@ App.SpotsModal = Ember.Mixin.create({
   }
 });
 
+App.AccountView = Ember.View.extend(App.SpotsModal);
 App.SpotsFormView = Ember.View.extend(App.SpotsModal);
 App.SpotsCommentView = Ember.View.extend(App.SpotsModal);

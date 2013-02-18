@@ -10,11 +10,8 @@ rand(3..6).times do
   user = User.new
   user.name = Faker::Internet.user_name
   user.email = Faker::Internet.email
-  password = Devise.friendly_token.first(8)
-  user.password = password
-  user.password_confirmation = password
-  user.save!
-  
+  user.save(:validate => false)
+
   rand(2..5).times do
     street = Faker::Address.street_name
     spot = user.spots.build

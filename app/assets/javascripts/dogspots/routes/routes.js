@@ -7,6 +7,7 @@ App.Router.map(function() {
     });
   });
 
+  this.route("account");
   this.route("about");
 });
 
@@ -53,7 +54,6 @@ App.SpotEditRoute = Ember.Route.extend(App.SpotsFormable, {
 });
 App.SpotCommentRoute = Ember.Route.extend({
   model: function() {
-    debugger
     return App.Comment.createRecord({
       user: App.currentUser,
       spot: this.modelFor('spot')
@@ -64,7 +64,6 @@ App.SpotCommentRoute = Ember.Route.extend({
   },
   events: {
     cancel: function(comment) {
-      debugger
       comment.transaction.rollback();
       return this.transitionTo('spot', this.modelFor('spot'));
     },
@@ -72,6 +71,29 @@ App.SpotCommentRoute = Ember.Route.extend({
       comment.get('store').commit();
       if (comment.didCreate) {
         return this.transitionTo('spot', this.modelFor('spot'));
+      }
+    }
+  }
+});
+
+App.AccountRoute = Ember.Route.extend({
+  model: function() {
+    if (App.currentUser.get('isGuest')) {
+      return App.User.createRecord();
+    } else {
+      return App.currentUser;
+    }
+  },
+  events: {
+    cancel: function(user) {
+      user.transaction.rollback();
+      return this.transitionTo('spots');
+    },
+    submit: function(user) {
+      user.get('store').commit();
+      if (user.didCreate) {
+        App.currentUser = user;
+        return this.transitionTo('spots');
       }
     }
   }
