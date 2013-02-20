@@ -1,6 +1,6 @@
 Dogspots::Application.routes.draw do
-  # devise_for :users
   match 'users(/:id)' => 'users#create', :via => [:post, :put]
+  devise_for :users
 
   resources :spots, except: :edit, :defaults => { :format => 'json' }
   resources :comments, except: [:index, :show, :edit, :update], :defaults => { :format => 'json' }

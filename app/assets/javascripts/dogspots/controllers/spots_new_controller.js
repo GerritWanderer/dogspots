@@ -1,31 +1,4 @@
 App.SpotsNewController = Ember.ObjectController.extend({
-  save: function() {
-    if (this.content.get("isInvalid")) {
-      // do something
-      return;
-    } else {
-      this.store.commit();
-      this.content.addObserver('id', this, 'afterSpotCreate');
-    }
-  },
-  cancel: function() {
-    this.content.deleteRecord();
-    this.transitionToRoute('spots');
-  },
-  afterSpotCreate: function () {
-    debugger
-    this.content.removeObserver('id', this, 'afterSpotCreate');
-    this.content.get('comments').createRecord({
-      spot: this.content,
-      user: App.currentUser,
-      text: this.content.get("comment_text")
-    });
-
-    if (this.content.get('comments').objectAt(0).get("isInvalid")) {
-      // do something
-    } else {
-      this.store.commit();
-    }
-    this.transitionToRoute('spotsShow', this.content);
-  }
+  values: [1,2,3,4,5],
+  rating: {}
 });

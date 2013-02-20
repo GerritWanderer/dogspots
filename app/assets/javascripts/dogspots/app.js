@@ -8,6 +8,9 @@ DS.RESTAdapter.registerTransform('object', {
     return Ember.isNone(deserialized) ? {} : deserialized;
   }
 });
+DS.RESTAdapter.map('App.Spot', {
+  ratings: { embedded: 'always' }
+});
 
 App.Store = DS.Store.extend({
   revision: 11,
