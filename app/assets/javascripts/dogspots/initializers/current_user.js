@@ -9,4 +9,4 @@ Ember.Application.initializer({
       App.currentUser = App.User.find(object.id);
     }
   }
-})
+});

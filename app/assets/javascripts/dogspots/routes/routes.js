@@ -22,25 +22,6 @@ App.SpotsIndexRoute = Ember.Route.extend({
     return App.Spot.find();
   }
 });
-
-App.SpotsFormable = Ember.Mixin.create({
-  renderTemplate: function() {
-    this.render('spots/form')
-  },
-  events: {
-    cancel: function(spot) {
-      spot.transaction.rollback();
-      return this.transitionTo('spots');
-    },
-    submit: function(spot) {
-      spot.get('ratings').createRecord(this.controller.rating);
-      spot.get('store').commit();
-      if (spot.didCreate) {
-        return this.transitionTo('spot', spot);
-      }
-    }
-  }
-});
 App.SpotsNewRoute = Ember.Route.extend(App.SpotsFormable, {
   model: function() {
     return App.Spot.createRecord({
@@ -53,49 +34,5 @@ App.SpotEditRoute = Ember.Route.extend(App.SpotsFormable, {
     return this.modelFor('spot');
   }
 });
-App.SpotCommentRoute = Ember.Route.extend({
-  model: function() {
-    return App.Comment.createRecord({
-      user: App.currentUser,
-      spot: this.modelFor('spot')
-    });
-  },
-  renderTemplate: function() {
-    this.render('spots/comment')
-  },
-  events: {
-    cancel: function(comment) {
-      comment.transaction.rollback();
-      return this.transitionTo('spot', this.modelFor('spot'));
-    },
-    submit: function(comment) {
-      comment.get('store').commit();
-      if (comment.didCreate) {
-        return this.transitionTo('spot', this.modelFor('spot'));
-      }
-    }
-  }
-});
 
-App.AccountRoute = Ember.Route.extend({
-  model: function() {
-    if (App.currentUser.get('isGuest')) {
-      return App.User.createRecord();
-    } else {
-      return App.currentUser;
-    }
-  },
-  events: {
-    cancel: function(user) {
-      user.transaction.rollback();
-      return this.transitionTo('spots');
-    },
-    submit: function(user) {
-      user.get('store').commit();
-      if (user.didCreate) {
-        App.currentUser = user;
-        return this.transitionTo('spots');
-      }
-    }
-  }
-});
+
