@@ -7,7 +7,7 @@ class Spot < ActiveRecord::Base
   attr_accessor :average_ratings, :image
   attr_accessible :user_id, :city, :latitude, :longitude, :street, :text, :title, :zip
 
-  READ_ONLY_ATTRIBUTES = [:average_ratings, :image_url]
+  READ_ONLY_ATTRIBUTES = [:average_ratings, :image_url, :ratings]
 
   def average_ratings
     if self.ratings.empty?
