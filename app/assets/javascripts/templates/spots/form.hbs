@@ -1,49 +1,76 @@
-<div class="modal-header">
-  <div class="button close btn-dismiss" {{action cancel content}}>x</div>
-  <h2 class="app-icon-large">New Dogspot</h2>
-</div>
-<div class="modal-body">
-  <div class="control-group">
-    <label class="control-label" for="spot-title">Title</label>
-    <div class="controls">
-        {{view Ember.TextField elementId='spot-title' valueBinding='content.title'}}
+<form>
+  <div class="modal fade in form-custom-field-modal">
+    <div class="modal-header">
+      <div class="button close btn-dismiss" {{action cancel content}}>x</div>
+      <h2 class="app-icon-large">New Dogspot</h2>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="post-text">Text</label>
-    <div class="controls">
-        {{view Ember.TextField elementId='spot-text' valueBinding='content.text'}}
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="spot-title">Title</label>
+        <div class="controls">
+            {{view Ember.TextField elementId='spot-title' valueBinding='content.title'}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="post-text">Text</label>
+        <div class="controls">
+            {{view Ember.TextField elementId='spot-text' valueBinding='content.text'}}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="post-text">Ground</label>
+        <div class="controls">
+          {{view Ember.Select contentBinding="values" valueBinding="rating.ground"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="post-text">Play</label>
+        <div class="controls">
+          {{view Ember.Select contentBinding="values" valueBinding="rating.play"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="post-text">Water</label>
+        <div class="controls">
+          {{view Ember.Select contentBinding="values" valueBinding="rating.water"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="post-text">Cleam</label>
+        <div class="controls">
+          {{view Ember.Select contentBinding="values" valueBinding="rating.clean"}}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="btn btn-dark" {{action cancel content}}>Cancel</a>
+      <button class="btn btn-success" type="submit" {{action step target="view"}}>Next Step</button>
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label" for="post-text">Ground</label>
-    <div class="controls">
-      {{view Ember.Select contentBinding="values" valueBinding="rating.ground"}}
+  <div class="modal fade in form-custom-field-modal" style="display: none">
+    <div class="modal-header">
+      <div class="button close btn-dismiss" {{action cancel content}}>x</div>
+      <h2 class="app-icon-large">Account</h2>
+    </div>
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="user-name">Name</label>
+        <div class="controls">
+          {{view Ember.TextField elementId='user-name' valueBinding='content.name'}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="user-email">E-Mail</label>
+        <div class="controls">
+          {{view Ember.TextField elementId='user-email' valueBinding='content.email'}}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="btn btn-dark" {{action cancel content}}>Cancel</a>
+      <button class="btn btn-success" type="submit" {{action submit content}}>Submit</button>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for="post-text">Play</label>
-    <div class="controls">
-      {{view Ember.Select contentBinding="values" valueBinding="rating.play"}}
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="post-text">Water</label>
-    <div class="controls">
-      {{view Ember.Select contentBinding="values" valueBinding="rating.water"}}
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="post-text">Cleam</label>
-    <div class="controls">
-      {{view Ember.Select contentBinding="values" valueBinding="rating.clean"}}
-    </div>
-  </div>
-  {{ log content }}
-
-</div>
-<div class="modal-footer">
-  <a class="btn btn-dark" {{action cancel content}}>Cancel</a>
-  <button class="btn btn-success" type="submit" {{action submit content}}>Save</button>
-</div>
+</form>

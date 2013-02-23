@@ -1,12 +1,13 @@
 App.SpotsModal = Ember.Mixin.create({
-  tagName: 'form',
-  classNames: 'modal fade in form-custom-field-modal'.w(),
-
   didInsertElement: function() {
     this.$().modal('show');
   },
   willDestroyElement: function() {
     this.$().modal('hide');
+  },
+  step: function(d) {
+    var currentModal = $(".modal:visible").toggle();
+    currentModal.next().toggle();
   }
 });
 
