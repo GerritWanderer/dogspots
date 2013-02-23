@@ -8,6 +8,7 @@ App.Router.map(function() {
   });
 
   this.route("account");
+  this.route("maps");
   this.route("about");
 });
 
@@ -34,5 +35,3 @@ App.SpotEditRoute = Ember.Route.extend(App.SpotsFormable, {
     return this.modelFor('spot');
   }
 });
-
-

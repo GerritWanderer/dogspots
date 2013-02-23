@@ -1,0 +1,15 @@
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100% }
+  #map_canvas { width: 100%; height: 500px; }
+</style>
+<div id="map_canvas"></div>
+<script type="text/javascript">
+  var mapOptions = {
+    zoom: 12,
+    disableDefaultUI: true,
+    center: new google.maps.LatLng(52.50143, 13.402521),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+</script>

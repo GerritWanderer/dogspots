@@ -4,6 +4,7 @@
   <title>Dogspots</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAfKGne9JJNnb4DsISQcUhiI5jvHZz1RrE&sensor=true"></script>
   <%= csrf_meta_tags %>
   <meta name="current-user" content="<%= UserSerializer.new(current_or_guest_user).to_json(root: false) %>" />
 </head>
