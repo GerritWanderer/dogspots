@@ -35,3 +35,8 @@ App.SpotEditRoute = Ember.Route.extend(App.SpotsFormable, {
     return this.modelFor('spot');
   }
 });
+App.MapsRoute = Ember.Route.extend({
+  model: function() {
+    return App.Spot.find();
+  }
+});
