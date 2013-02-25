@@ -9,6 +9,9 @@ App.SpotsFormable = Ember.Mixin.create({
     },
     submit: function(spot) {
       spot.get('ratings').createRecord(this.controller.rating);
+      debugger
+      spot.set('latitude', this.controller.latitude);
+      spot.set('longitude', this.controller.longitude);
       spot.get('store').commit();
       if (spot.didCreate) {
         return this.transitionTo('spot', spot);

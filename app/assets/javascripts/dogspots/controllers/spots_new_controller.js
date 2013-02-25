@@ -1,4 +1,6 @@
 App.SpotsNewController = Ember.ObjectController.extend({
   values: [1,2,3,4,5],
-  rating: {}
+  rating: {},
+  latitude: null,
+  longitude: null
 });
