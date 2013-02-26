@@ -27,7 +27,7 @@ App.MapsView = Ember.View.extend({
 
       google.maps.event.addListener(marker, 'click', function(event) {
         window.GoogleMaps.panTo(event.latLng);
-        window.GoogleMapsInfoWindow.setContent(marker.content);
+        window.GoogleMapsInfoWindow.setContent(this.content);
         window.GoogleMapsInfoWindow.open(window.GoogleMaps, this);
       });
     }

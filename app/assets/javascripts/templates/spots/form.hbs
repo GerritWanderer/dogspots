@@ -2,20 +2,12 @@
   <div class="modal fade in form-custom-field-modal">
     <div class="modal-header">
       <div class="button close btn-dismiss" {{action cancel content}}>x</div>
-      <h3 class="app-icon-large">New Dogspot</h3>
+      <h4 class="app-icon-large">New Dogspot</h4>
     </div>
     <div class="modal-body">
       <div class="control-group">
-        <label class="control-label" for="spot-title">Title</label>
         <div class="controls">
-            {{view Ember.TextField elementId='spot-title' valueBinding='content.title'}}
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="spot-title">Map</label>
-        <div class="controls">
-          <style type="text/css">#map_canvas { width: 100%; height: 250px; }</style>
-          <div id="map_canvas"></div>
+          <div id="map_canvas" style="height: 450px;"></div>
         </div>
       </div>
     </div>
@@ -28,9 +20,15 @@
   <div class="modal fade in form-custom-field-modal" style="display: none">
     <div class="modal-header">
       <div class="button close btn-dismiss" {{action cancel content}}>x</div>
-      <h3 class="app-icon-large">Account</h3>
+      <h4 class="app-icon-large">Account</h4>
     </div>
     <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="spot-title">Title</label>
+        <div class="controls">
+          {{view Ember.TextField elementId='spot-title' valueBinding='content.title'}}
+        </div>
+      </div>
       <div class="control-group">
         <label class="control-label" for="post-text">Ground</label>
         <div class="controls">
