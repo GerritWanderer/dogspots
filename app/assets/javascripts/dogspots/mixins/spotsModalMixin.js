@@ -1,12 +1,4 @@
-App.ModalMixin = Ember.Mixin.create({
-  didInsertElement: function() {
-    this.$().modal('show');
-  },
-  willDestroyElement: function() {
-    this.$().modal('hide');
-  }
-});
-App.SpotsModalMixin = Ember.Mixin.create({
+App.SpotsModalMixin = Ember.Mixin.create(App.ModalMixin, {
   didInsertElement: function() {
     this.$().modal('show');
     if (typeof window.GoogleMaps == "undefined") {
@@ -24,8 +16,8 @@ App.SpotsModalMixin = Ember.Mixin.create({
           position: event.latLng,
           map: window.GoogleMaps
         });
-        App.__container__.lookup('controller:SpotsNew').set('latitude', event.latLng.hb);
-        App.__container__.lookup('controller:SpotsNew').set('longitude', event.latLng.ib);
+        App.currentUser.set('latitude', event.latLng.hb);
+        App.currentUser.set('longitude', event.latLng.ib);
       });
     }
 
@@ -43,7 +35,3 @@ App.SpotsModalMixin = Ember.Mixin.create({
     currentModal.prev().toggle();
   }
 });
-
-App.AccountView = Ember.View.extend(App.ModalMixin);
-App.SpotsFormView = Ember.View.extend(App.SpotsModalMixin);
-App.SpotsCommentView = Ember.View.extend(App.ModalMixin);
