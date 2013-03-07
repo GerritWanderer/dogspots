@@ -10,6 +10,8 @@ rand(3..6).times do
   user = User.new
   user.name = Faker::Internet.user_name
   user.email = Faker::Internet.email
+  user.latitude = "52.#{rand(42..57)}#{rand(1000..9999)}"
+  user.longitude = "13.#{rand(22..55)}#{rand(1000..9999)}"
   user.save(:validate => false)
 
   rand(2..5).times do

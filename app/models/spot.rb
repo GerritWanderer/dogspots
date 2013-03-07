@@ -4,6 +4,8 @@ class Spot < ActiveRecord::Base
   has_many :spot_images
   belongs_to :user
 
+  geocoded_by :latitude => :latitude, :longitude => :longitude
+
   attr_accessor :average_ratings, :image
   attr_accessible :user_id, :city, :latitude, :longitude, :street, :text, :title, :zip
 

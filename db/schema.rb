@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218224955) do
+ActiveRecord::Schema.define(:version => 20130307202510) do
 
   create_table "comments", :force => true do |t|
     t.integer  "spot_id"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20130218224955) do
     t.datetime "updated_at",                             :null => false
     t.string   "authentication_token"
     t.integer  "is_guest",               :default => 1
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

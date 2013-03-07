@@ -21,7 +21,13 @@ class ApplicationController < ActionController::Base
 
   private
   def create_guest_user
-    user = User.create(:name => "Gast", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    puts request.location.to_yaml
+    user = User.create(
+      :name => "Gast",
+      :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com",
+      :latitude => request.location.latitude,
+      :longitude => request.location.longitude
+    )
     user.save(:validate => false)
     cookies[:authentication_token] = {:value => user.authentication_token, :expires => Time.now + 1.year}
     return user
