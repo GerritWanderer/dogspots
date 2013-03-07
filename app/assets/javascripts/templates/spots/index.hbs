@@ -6,7 +6,7 @@
       <div class="span9 spot-title">
         <h4>{{spot.title}}</h4>
         <div class="rating"><div {{bindAttr class="spot.stars_style :active"}}"></div></div>
-        <span>{{spot.average_ratings.size}} Bewertungen</span>
+        <span>({{spot.average_ratings.size}}) Entfernung: {{spot.distance}}</span>
       </div>
       <div class="clearfix"></div>
     {{/linkTo}}

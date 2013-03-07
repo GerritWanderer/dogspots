@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     end
     @user.name = params[:user][:name]
     @user.email = params[:user][:email]
+    @user.latitude = params[:user][:latitude]
+    @user.longitude = params[:user][:longitude]
     @user.is_guest = 0
     @user.save(:validate => false)
 

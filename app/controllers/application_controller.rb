@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_or_guest_user
+  serialization_scope :current_or_guest_user
 
   def current_or_guest_user
     if current_user
@@ -25,8 +26,8 @@ class ApplicationController < ActionController::Base
     user = User.create(
       :name => "Gast",
       :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com",
-      :latitude => request.location.latitude,
-      :longitude => request.location.longitude
+      :latitude => request.location.latitude == 0 ? 52.501476 : request.location.latitude,
+      :longitude => request.location.longitude == 0 ? 13.402526 : request.location.longitude
     )
     user.save(:validate => false)
     cookies[:authentication_token] = {:value => user.authentication_token, :expires => Time.now + 1.year}

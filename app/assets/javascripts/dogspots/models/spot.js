@@ -4,6 +4,7 @@ App.Spot = DS.Model.extend({
   image_url: DS.attr('string'),
   latitude: DS.attr('string'),
   longitude: DS.attr('string'),
+  distance: DS.attr('string'),
   comments: DS.hasMany('App.Comment'),
   ratings: DS.hasMany('App.Rating'),
   user: DS.belongsTo('App.User'),
