@@ -1,9 +1,9 @@
 App.AccountRoute = Ember.Route.extend({
   model: function() {
-    if (App.currentUser.get('isGuest')) {
+    if (App.CurrentUser.get('isGuest')) {
       return App.User.createRecord();
     } else {
-      return App.currentUser;
+      return App.CurrentUser;
     }
   },
   events: {
@@ -14,7 +14,7 @@ App.AccountRoute = Ember.Route.extend({
     submit: function(user) {
       user.get('store').commit();
       if (user.didCreate) {
-        App.currentUser = user;
+        App.CurrentUser = user;
         return this.transitionTo('spots');
       }
     }

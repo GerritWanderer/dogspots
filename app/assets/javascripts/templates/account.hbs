@@ -1,22 +1,24 @@
-<div class="modal-header">
-  <div class="button close btn-dismiss" {{action cancel content}}>x</div>
-  <h2 class="app-icon-large">Account</h2>
-</div>
-<div class="modal-body">
-  <div class="control-group">
-    <label class="control-label" for="user-name">Name</label>
-    <div class="controls">
-      {{view Ember.TextField elementId='user-name' valueBinding='content.name'}}
+<div class="modal fade in form-custom-field-modal">
+  <div class="modal-header">
+    <div class="button close btn-dismiss" {{action cancel content}}>x</div>
+    <h2 class="app-icon-large">Account</h2>
+  </div>
+  <div class="modal-body">
+    <div class="control-group">
+      <label class="control-label" for="user-name">Name</label>
+      <div class="controls">
+        {{view Ember.TextField elementId='user-name' valueBinding='content.name'}}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="user-email">E-Mail</label>
+      <div class="controls">
+        {{view Ember.TextField elementId='user-email' valueBinding='content.email'}}
+      </div>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for="user-email">E-Mail</label>
-    <div class="controls">
-      {{view Ember.TextField elementId='user-email' valueBinding='content.email'}}
-    </div>
+  <div class="modal-footer">
+    <a class="btn btn-dark" {{action cancel content}}>Cancel</a>
+    <button class="btn btn-success" type="submit" {{action submit content}}>Save</button>
   </div>
-</div>
-<div class="modal-footer">
-  <a class="btn btn-dark" {{action cancel content}}>Cancel</a>
-  <button class="btn btn-success" type="submit" {{action submit content}}>Save</button>
 </div>

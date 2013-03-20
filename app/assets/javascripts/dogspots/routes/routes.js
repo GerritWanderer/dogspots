@@ -26,7 +26,7 @@ App.SpotsIndexRoute = Ember.Route.extend({
 App.SpotsNewRoute = Ember.Route.extend(App.SpotsFormable, {
   model: function() {
     return App.Spot.createRecord({
-      user: App.currentUser
+      user: App.CurrentUser
     });
   }
 });

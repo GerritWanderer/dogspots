@@ -16,8 +16,8 @@ App.SpotsModalMixin = Ember.Mixin.create({
         position: event.latLng,
         map: window.GoogleMaps
       });
-      App.currentUser.set('latitude', event.latLng.hb);
-      App.currentUser.set('longitude', event.latLng.ib);
+      App.CurrentUser.set('latitude', event.latLng.hb);
+      App.CurrentUser.set('longitude', event.latLng.ib);
     });
   },
 

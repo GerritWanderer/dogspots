@@ -6,7 +6,7 @@ Ember.Application.initializer({
 
     if (attributes) {
       var object = store.load(App.User, JSON.parse(attributes));
-      App.currentUser = App.User.find(object.id);
+      App.CurrentUser = App.User.find(object.id);
     }
   }
 });

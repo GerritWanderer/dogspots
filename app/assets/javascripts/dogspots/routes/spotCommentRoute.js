@@ -1,7 +1,7 @@
 App.SpotCommentRoute = Ember.Route.extend({
   model: function() {
     return App.Comment.createRecord({
-      user: App.currentUser,
+      user: App.CurrentUser,
       spot: this.modelFor('spot')
     });
   },
